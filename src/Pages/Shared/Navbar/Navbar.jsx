@@ -67,7 +67,7 @@ const Navbar = () => {
                       <div className='flex items-center gap-6'>
                         <li className='text-black font-bold text-xl'>
                       <NavLink
-                          to='/blog'
+                          to='dashboard/mySelectedClass'
                           className={({ isActive }) => (isActive ? 'active' : 'default')}
                       >
                           DashBoard
@@ -166,7 +166,7 @@ const Navbar = () => {
                       <div className='flex flex-col gap-6'>
                         <li>
                       <Link
-                          to='/blog'
+                          to='dashboard/mySelectedClass'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400  '
                       >
                           DashBoard

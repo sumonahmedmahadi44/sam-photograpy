@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
+import SectionTitle from '../../components/SectionTitle';
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext)
+  const {signIn,signInWithGoogle} = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,6 +14,15 @@ const Login = () => {
 
  
     const { register, handleSubmit,  formState: { errors } } = useForm();
+    const handleGoogleBtn=()=> {
+      signInWithGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+      })
+      .catch(error => console.error(error));
+      
+      
+    }
   const onSubmit = data => {
     console.log(data);
 
@@ -31,7 +41,9 @@ const Login = () => {
     return (
 
 
-<div className="w-full max-w-xs mx-auto m-20 border border-black border-spacing-9 p-10">
+<div>
+<SectionTitle subHeading='welcome to SAM Photography' heading='Please Log in'></SectionTitle>
+  <div className="w-full max-w-xs mx-auto m-20 border border-black border-spacing-9 p-10">
 <form  onSubmit={handleSubmit(onSubmit)}>
       {/* register your input into the hook by invoking the "register" function */}
       <input className="shadow  border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline focus:shadow-outline my-8" placeholder='email' {...register("email",{ required: true })} />
@@ -49,7 +61,8 @@ const Login = () => {
     <div>
          <h1 className='text-center text-xl font-semibold text-black '>Don't Have Account ? <Link to='/register'><button className='btn btn-outline btn-sm my-5'>Register!!</button></Link></h1>
              </div>
-    <Link to ='/'><button   className="btn btn-outline btn-info w-full mt-5"> <FaGoogle className="me-2"></FaGoogle>  Google</button></Link>
+    <Link to ='/'><button onClick={handleGoogleBtn} className="btn btn-outline btn-info w-full mt-5"> <FaGoogle className="me-2"></FaGoogle>  Google</button></Link>
+</div>
 </div>
     );
 };

@@ -4,12 +4,23 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import SectionTitle from '../../components/SectionTitle';
 
 
 const Registration = () => {
-  const {createUser,logOut} = useContext(AuthContext)
+ 
+  const {createUser,logOut,signInWithGoogle} = useContext(AuthContext)
   const navigate = useNavigate()
     const { register, handleSubmit,reset,  formState: { errors } } = useForm();
+    const handleGoogleBtn=()=> {
+      signInWithGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+      })
+      .catch(error => console.error(error));
+      
+      
+    }
   const onSubmit = data => {
     console.log(data)
     createUser(data.email, data.password)
@@ -45,7 +56,11 @@ const Registration = () => {
  
 
     return (
-      <div className="w-full max-w-xs mx-auto m-20 border border-black border-spacing-9 p-10">
+    
+     <div>
+      <SectionTitle subHeading='welcome to SAM Photography' heading='Please Sign up'></SectionTitle>
+       <div className="w-full max-w-xs mx-auto m-10 border border-black border-spacing-9 p-10">
+         
       <form  onSubmit={handleSubmit(onSubmit)}>
             {/* register your input into the hook by invoking the "register" function */}
             <input className="shadow  border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline focus:shadow-outline my-8" placeholder='name' {...register("name",{ required: true })} />
@@ -68,8 +83,9 @@ const Registration = () => {
           <div>
                <h1 className='text-center text-xl font-semibold text-black '>Already Have Account ? <Link to='/login'><button className='btn btn-outline btn-sm my-5'>login!!</button></Link></h1>
                    </div>
-          <Link to ='/'><button   className="btn btn-outline btn-info w-full mt-5"> <FaGoogle className="me-2"></FaGoogle>  Google</button></Link>
+          <Link to ='/'><button  onClick={handleGoogleBtn} className="btn btn-outline btn-info w-full mt-5"> <FaGoogle className="me-2"></FaGoogle>  Google</button></Link>
       </div>
+     </div>
     );
 };
 
