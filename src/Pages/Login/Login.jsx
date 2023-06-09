@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle,FaEyeSlash,FaEye } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
 import SectionTitle from '../../components/SectionTitle';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const {signIn,signInWithGoogle} = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,6 +30,13 @@ const Login = () => {
 
     signIn(data.email,data.password)
     .then(result=>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'User login successfully.',
+        showConfirmButton: false,
+        timer: 1500
+    });
       const loggedUser = result.user;
       navigate(from,{replace:true});
       console.log(loggedUser)
@@ -50,7 +59,15 @@ const Login = () => {
       {errors.email && <span>email is required</span>}
       
       {/* include validation with required or other standard HTML validation rules */}
-      <input className="shadow  border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline my-8" placeholder='password' {...register("password", { required: true})} />
+      <input type={showPassword ? "text" : "password"} className="shadow  border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline my-8 relative" placeholder='password' {...register("password", { required: true})} />
+      <p onClick={() => setShowPassword(!showPassword)}>
+
+<small className=" absolute -mt-8 ml-48 md:ml-52">
+    {
+        showPassword ? <FaEyeSlash ></FaEyeSlash> : <FaEye></FaEye>
+    }
+</small>
+</p>
       {/* errors will return when field validation fails  */}
       {errors.password && <span>password is required</span>}
       {errors.password?.type==='minlength' && <span className='text-red-600'>password need atleast 6 character</span>}

@@ -67,7 +67,7 @@ const Navbar = () => {
                       <div className='flex items-center gap-6'>
                         <li className='text-black font-bold text-xl'>
                       <NavLink
-                          to='dashboard/mySelectedClass'
+                          to='dashboard'
                           className={({ isActive }) => (isActive ? 'active' : 'default')}
                       >
                           DashBoard

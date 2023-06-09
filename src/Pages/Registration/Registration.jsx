@@ -3,15 +3,27 @@ import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { updateProfile } from 'firebase/auth';
+// import { updateProfile } from 'firebase/auth';
 import SectionTitle from '../../components/SectionTitle';
+import Swal from 'sweetalert2';
 
 
 const Registration = () => {
+  
  
-  const {createUser,logOut,signInWithGoogle} = useContext(AuthContext)
-  const navigate = useNavigate()
-    const { register, handleSubmit,reset,  formState: { errors } } = useForm();
+  // const {createUser,logOut,signInWithGoogle} = useContext(AuthContext)
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    
+
+
+    
+    const { createUser, userUpdateProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleGoogleBtn=()=> {
       signInWithGoogle()
       .then(result => {
@@ -21,40 +33,46 @@ const Registration = () => {
       
       
     }
-  const onSubmit = data => {
-    console.log(data)
-    createUser(data.email, data.password)
-    .then(result=>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      updateUserData(result.user, data.photo,data.name)
-      logOut()
-                navigate('/login')
-                reset()
-               
-      
-    })
-    .catch(error => {
-      console.log(error);
-  })
-    
-  }
-  const updateUserData = (user, photo,name) => {
-    updateProfile(user, {
-        photoURL: photo,
-        displayName : name
-    })
-        .then(() => {
-            console.log('user photo update');
-        })
-        .catch(error => {
-            console.log(error);
-        })
-}
 
-  
- 
+    const onSubmit = data => {
+        // console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                userUpdateProfile(data.name, data.photoURL)
+                
+                .then(() => {
+                  const saveUser = { name: data.name, email: data.email }
+                  fetch('http://localhost:5000/users', {
+                      method: 'POST',
+                      headers: {
+                          'content-type': 'application/json'
+                      },
+                      body: JSON.stringify(saveUser)
+                  })
+                      .then(res => res.json())
+                      .then(data => {
+                          if (data.insertedId) {
+                              reset();
+                              Swal.fire({
+                                  position: 'top-end',
+                                  icon: 'success',
+                                  title: 'User created successfully.',
+                                  showConfirmButton: false,
+                                  timer: 1500
+                              });
+                              navigate('/');
+                          }
+                      })
 
+
+
+              })
+
+                    .catch(error => console.log(error))
+            })
+    };
     return (
     
      <div>
