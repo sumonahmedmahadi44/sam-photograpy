@@ -17,7 +17,7 @@ const UseAxios = () => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem('access-token');
       if (token) {
-        config.headers.authorization = `bearer ${token}`;
+        config.headers.Authorization = `bearer ${token}`;
       }
       return config;
     });
@@ -32,7 +32,7 @@ const UseAxios = () => {
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOut, navigate,axiosSecure]);
 
   return [axiosSecure];
 };

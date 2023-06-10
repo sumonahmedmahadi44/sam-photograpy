@@ -32,14 +32,14 @@ const Dashboard = () => {
             <div className="divider"></div>
       <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
             </> : isInstructor? <>
-            <li className='text-xl font-semibold'><Link to='allClasses'>Add classes</Link></li>
-            <li className='text-xl font-semibold'><Link to='allClasses'>My classes</Link></li>
+            <li className='text-xl font-semibold'><Link to='addClasses'>Add classes</Link></li>
+            <li className='text-xl font-semibold'><Link to='myClasses'>My classes</Link></li>
             <div className="divider"></div>
       <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
             </> : <>
           
-            <li className='text-xl font-semibold'><Link to='allClasses'>my selected classes</Link></li>
-            <li className='text-xl font-semibold'><Link to='allClasses'>My enrolled classes</Link></li>
+            <li className='text-xl font-semibold'><Link to='mySelectedClasses'>my selected classes</Link></li>
+            <li className='text-xl font-semibold'><Link to='myEnrolledClasses'>My enrolled classes</Link></li>
             <div className="divider"></div>
       <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
             </>

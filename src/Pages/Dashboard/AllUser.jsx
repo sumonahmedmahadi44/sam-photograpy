@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const AllUser = () => {
+    const {data:users=[],refetch}= useQuery(['users'],async()=>{
+        const res = await fetch('http://localhost:5000/users')
+        return res.json();
+    })
 
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                setUsers(data)
-            })
-    }, [users])
+    // const [users, setUsers] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/users')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             // console.log(data)
+    //             setUsers(data)
+    //         })
+    // }, [users])
 
 
     const handleMakeAdmin = user => {
@@ -24,15 +28,14 @@ const AllUser = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-
+                    refetch()
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    const remaining = users.filter(user => user._id !== user._id);
-                    setUsers(remaining)
+                    
                 }
             })
     }
@@ -40,7 +43,7 @@ const AllUser = () => {
 
 
     const handleMakeInstructor = user => {
-        console.log('hello')
+        // console.log('hello')
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
@@ -48,14 +51,14 @@ const AllUser = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
+                    refetch()
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    const remaining = users.filter(user => user._id !== user._id);
-                    setUsers(remaining);
+                   
                 }
             })
     }
