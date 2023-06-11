@@ -32,6 +32,7 @@ const AllUser = () => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
+                        title: 'user update to admin  successfully',
                         showConfirmButton: false,
                         timer: 2000
                     })
@@ -49,12 +50,13 @@ const AllUser = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 if (data.modifiedCount) {
                     refetch()
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
+                        title: 'user update to instructor  successfully',
                         showConfirmButton: false,
                         timer: 2000
                     })

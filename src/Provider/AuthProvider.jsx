@@ -10,48 +10,50 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 
-const AuthProvider = ({children}) => {
-    const [user,setUser] = useState(null)
-    const [loading,setLoading] = useState(true);
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true);
 
 
-    const createUser = (email,password)=>{    setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
     };
 
-    const signIn = (email,password)=>{
+    const signIn = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     };
 
-    const logOut =()=>{
+    const logOut = () => {
         setLoading(true);
         return signOut(auth);
     }
-    const signInWithGoogle = () =>{
+    const signInWithGoogle = () => {
         setLoading(true)
-        return signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth, googleProvider)
     };
 
-    const userUpdateProfile = (user, name, photo) => {
-        setLoading(true)
-        return updateProfile(user, {
+    const userUpdateProfile = (name, photo) => {
+        // setLoading(true)
+        return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
         })
     }
 
-    
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+         
 
 
             if (currentUser) {
                 axios.post('http://localhost:5000/jwt', { email: currentUser.email })
                     .then(data => {
-                        console.log(data.data.token)
+                       
                         localStorage.setItem('access-token', data.data.token)
                         setLoading(false)
                     })
@@ -61,7 +63,7 @@ const AuthProvider = ({children}) => {
             }
 
 
-            
+
 
 
         })
@@ -72,7 +74,7 @@ const AuthProvider = ({children}) => {
 
     }, [])
 
-    const authinfo ={
+    const authinfo = {
         user,
         loading,
         createUser,
@@ -80,11 +82,11 @@ const AuthProvider = ({children}) => {
         logOut,
         signInWithGoogle,
         userUpdateProfile
-        
+
     }
     return (
         <div>
-           <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>
+            <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>
         </div>
     );
 };

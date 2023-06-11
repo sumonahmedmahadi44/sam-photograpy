@@ -48,7 +48,7 @@ const Navbar = () => {
 
                   <li className='text-black font-bold text-xl'>
                       <NavLink
-                          to='/blog'
+                          to='/instructor'
                           className={({ isActive }) => (isActive ? 'active' : 'default')}
                       >
                           Instructor
@@ -56,7 +56,7 @@ const Navbar = () => {
                   </li>
                   <li className='text-black font-bold text-xl'>
                       <NavLink
-                          to='/blog'
+                          to='/classes'
                           className={({ isActive }) => (isActive ? 'active' : 'default')}
                       >
                           Classes
