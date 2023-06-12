@@ -26,7 +26,6 @@ const Login = () => {
       
     }
   const onSubmit = data => {
-    console.log(data);
 
     signIn(data.email,data.password)
     .then(result=>{
@@ -39,7 +38,6 @@ const Login = () => {
     });
       const loggedUser = result.user;
       navigate(from,{replace:true});
-      console.log(loggedUser)
     })
   
 

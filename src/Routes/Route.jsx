@@ -16,10 +16,14 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import Instructor from "../Pages/Home/Instructor";
 import Classes from "../Pages/Home/Classes";
+import ErrorPage from "../Pages/Shared/ErrorPage";
+import Payment from "../Pages/Dashboard/Payment";
+import CheckoutForm from "../Pages/Dashboard/CheckoutForm";
 
 export const router = createBrowserRouter([
     {
       path: "/",
+      errorElement:<ErrorPage></ErrorPage>,
       element:<Main></Main>,
       children:[
         {
@@ -42,6 +46,7 @@ export const router = createBrowserRouter([
             path:'/classes',
             element: <Classes></Classes>
         },
+        
       ]
     },
     {
@@ -66,7 +71,15 @@ export const router = createBrowserRouter([
         },
         {
           path:'mySelectedClasses',
-          element:<InstructorRoute><MySelectedClasses></MySelectedClasses></InstructorRoute>
+          element:<MySelectedClasses></MySelectedClasses>
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>
+        },
+        {
+          path:'checkout',
+          element:<CheckoutForm></CheckoutForm>
         },
         {
           path:'myEnrolledClasses',

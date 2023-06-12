@@ -1,39 +1,112 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import Container from '../Shared/Container/Container';
-
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import Container from "../Shared/Container/Container";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import UseAdmin from "../../Hooks/UseAdmin";
+import UseInstructor from "../../Hooks/UseInstructor";
 
 const Classes = () => {
-    const {data:classes=[]} = useQuery({
-        queryKey:['classes'],
-        queryFn:async()=>{
-            const res = await fetch('http://localhost:5000/approved');
-            return res.json();
-            
+  const { user } = useContext(AuthContext);
+  const [isAdmin]=UseAdmin();
+  const [isInstructor]=UseInstructor();
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { data: classes = [] } = useQuery({
+    queryKey: ["classes"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/approved");
+      return res.json();
+    },
+  });
+  // const { data } = useQuery({
+  //   queryKey: ["singleClasses"],
+  //   queryFn: async () => {
+  //     const res = await fetch(`http://localhost:5000/approved/${_id}`);
+  //     return res.json();
+  //   },
+  // });
+
+  const handleSelectClass = (cls) => {
+    console.log(cls)
+    const { className, image, price, AvailableSeat, displayName, email, } = cls;
+    if (user && user.email) {
+      const classData = {
+        className,
+        image,
+        price,
+        AvailableSeat,
+        InstructorName: displayName,
+        InstructorEmail: email,
+        email: user.email,
+      };
+
+      fetch('http://localhost:5000/selectedClass', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "class has been selected",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Please Login to Select the classes",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Plese Login!!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
         }
-    })
-    return (
-        <Container>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10 items-center my-10'>
-            {
-            classes.map(cls=><div className="card w-96 bg-teal-200 shadow-xl">
+      });
+    }
+  };
+
+  return (
+    <Container>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center my-10">
+        {classes.map((cls) => (
+          <div key={cls._id} className="card w-96 bg-teal-200 shadow-xl">
             <figure className="px-10 pt-10">
-              <img  src={cls.image} alt="Shoes" className="rounded-xl h-96 " />
+              <img src={cls.image} alt="Shoes" className="rounded-xl h-96 " />
             </figure>
             <div className="card-body  items-center text-center">
               <h2 className="card-title">ClassName: {cls.className}</h2>
-              <p>Instuctor Name: {cls.displayName}</p>
+              <p>Instructor Name: {cls.displayName}</p>
               <p>Available Seat :{cls.AvailableSeat}</p>
               <p>Price : {cls.price}</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Select</button>
+                <button disabled={isAdmin || isInstructor || cls.AvailableSeat == '0'}
+                   onClick={() => handleSelectClass(cls)}
+                  className={cls?.AvailableSeat==='0'? 'bg-red-500 font-bold' : 'btn btn-primary'}
+                >
+                  Select
+                </button>
               </div>
             </div>
-          </div>)}
-        </div>
-            
-        </Container>
-    );
+          </div>
+        ))}
+      </div>
+    </Container>
+  );
 };
 
 export default Classes;
