@@ -24,13 +24,13 @@ const MyClasses = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>#</th>
-              <th>className</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Available seat</th>
-              <th>Status</th>
-              <th>Update</th>
+              <th className="font-extrabold text-orange-600 text-xs">#</th>
+              <th className="font-extrabold text-orange-600 text-xs">className</th>
+              <th className="font-extrabold text-orange-600 text-xs">Image</th>
+              <th className="font-extrabold text-orange-600 text-xs">Price</th>
+              <th className="font-extrabold text-orange-600 text-xs">Available seat</th>
+              <th className="font-extrabold text-orange-600 text-xs">Status</th>
+              <th className="font-extrabold text-orange-600 text-xs">Update</th>
               {/* <th>Update</th>
                             <th>Delete</th> */}
             </tr>
@@ -57,9 +57,9 @@ const MyClasses = () => {
                   </div>
                 </td>
 
-                <td>${cls.price}</td>
-                <td>${cls.AvailableSeat}</td>
-                <td>${cls.status}</td>
+                <td className="font-bold">${cls.price}</td>
+                <td className="font-bold">${cls.AvailableSeat}</td>
+                <td className="font-bold">${cls.status}</td>
                 <td>
                   <button className="btn btn-secondary">Update</button>
                 </td>

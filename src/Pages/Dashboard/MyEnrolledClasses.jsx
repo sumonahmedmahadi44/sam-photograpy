@@ -23,13 +23,13 @@ const MyEnrolledClasses = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>#</th>
-              <th>className</th>
-              <th>Quantity</th>
-              <th>email</th>
-              <th>Image</th>
-              <th>InstructorName</th>
-              <th>Price</th>
+              <th className="font-extrabold text-orange-600 text-xs">#</th>
+              <th className="font-extrabold text-orange-600 text-xs">className</th>
+              <th className="font-extrabold text-orange-600 text-xs">Quantity</th>
+              <th className="font-extrabold text-orange-600 text-xs">email</th>
+              <th className="font-extrabold text-orange-600 text-xs">Image</th>
+              <th className="font-extrabold text-orange-600 text-xs">InstructorName</th>
+              <th className="font-extrabold text-orange-600 text-xs">Price</th>
               
               {/* <th>Update</th>
                             <th>Delete</th> */}
@@ -67,9 +67,9 @@ const MyEnrolledClasses = () => {
                   </div>
                 </td>
 
-                <td>${cls.InstructorName}</td>
+                <td className="font-bold">${cls.InstructorName}</td>
                
-                <td>${cls.price}</td>
+                <td className="font-bold">${cls.price}</td>
                 
                 
                 

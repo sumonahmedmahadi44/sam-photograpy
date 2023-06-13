@@ -75,24 +75,24 @@ const AllUser = () => {
                 <table className="table table-xs md:table-lg">
                     <thead>
                         <tr className="">
-                            <th>#</th>
-                            <th>Users Name</th>
-                            <th>Users Email</th>
-                            <th>Make Admin</th>
-                            <th>Make  Instructor</th>
+                            <th className="font-extrabold text-orange-600 text-xs">#</th>
+                            <th className="font-extrabold text-orange-600 text-xs">Users Name</th>
+                            <th className="font-extrabold text-orange-600 text-xs">Users Email</th>
+                            <th className="font-extrabold text-orange-600 text-xs">Make Admin</th>
+                            <th className="font-extrabold text-orange-600 text-xs">Make  Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             users.map((user, index) =>
                                 <tr key={user._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.role === 'admin' ? 'admin' :
+                                    <th className="font-bold">{index + 1}</th>
+                                    <td className="font-bold">{user.name}</td>
+                                    <td className="font-bold">{user.email}</td>
+                                    <td className="font-bold">{user.role === 'admin' ? 'admin' :
                                         <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-teal-500  text-white"><FaUserShield></FaUserShield></button>
                                     }</td>
-                                    <td>{user.role === 'instructor' ? 'instructor' :
+                                    <td className="font-bold">{user.role === 'instructor' ? 'instructor' :
                                         <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-teal-500  text-white"><FaChalkboardTeacher></FaChalkboardTeacher></button>
                                     }</td>
                                 </tr>

@@ -25,9 +25,10 @@ const CheckoutForm = ({ data, price }) => {
                     console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret);
                 })
+                
         }
-        console.log(clientSecret)
     }, [price, axiosSecure])
+    console.log(clientSecret)
     
 
 
@@ -130,7 +131,7 @@ const CheckoutForm = ({ data, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || clientSecret  || processing}>
+                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret  || processing}>
                     Pay
                 </button>
             </form>

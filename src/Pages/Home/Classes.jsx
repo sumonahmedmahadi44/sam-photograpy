@@ -87,6 +87,7 @@ const Classes = () => {
               <h2 className="card-title">ClassName: {cls.className}</h2>
               <p>Instructor Name: {cls.displayName}</p>
               <p>Available Seat :{cls.AvailableSeat}</p>
+              <p>Enroll Students : {cls.enroll}</p>
               <p>Price : {cls.price}</p>
               <div className="card-actions">
                 <button disabled={isAdmin || isInstructor || cls.AvailableSeat == '0'}

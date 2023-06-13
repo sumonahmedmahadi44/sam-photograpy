@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import logo from '../../public/logo.jpg'
 import UseAdmin from '../Hooks/UseAdmin';
 import UseInstructor from '../Hooks/UseInstructor';
+import { FaHome} from 'react-icons/fa';
 
 
 const Dashboard = () => {
@@ -27,30 +28,34 @@ const Dashboard = () => {
     <ul >
         {
             
-            isAdmin ? <> <li className='text-xl font-semibold'><Link to='allUser'>All Users</Link></li>
-           <li className='text-xl font-semibold'><Link to='allClasses'>All classes</Link></li>
+            isAdmin ? <> <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='allUser'>All Users</Link></li>
+           <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='allClasses'>All classes</Link></li>
             <div className="divider"></div>
-      <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='/'> 
+      <FaHome></FaHome> Home</Link></li>
+      
             </> : isInstructor? <>
-            <li className='text-xl font-semibold'><Link to='addClasses'>Add classes</Link></li>
-            <li className='text-xl font-semibold'><Link to='myClasses'>My classes</Link></li>
+            <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='addClasses'>Add classes</Link></li>
+            <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='myClasses'>My classes</Link></li>
             <div className="divider"></div>
-      <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='/'> 
+      <FaHome></FaHome> Home</Link></li>
             </> : <>
           
-            <li className='text-xl font-semibold'><Link to='mySelectedClasses'>my selected classes</Link></li>
-            <li className='text-xl font-semibold'><Link to='myEnrolledClasses'>My enrolled classes</Link></li>
+            <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='mySelectedClasses'>my selected classes</Link></li>
+            <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='myEnrolledClasses'>My enrolled classes</Link></li>
             <div className="divider"></div>
-      <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='/'> 
+      <FaHome></FaHome> Home</Link></li>
             </>
             
         }
       {/* Sidebar content here */}
-      {/* <li className='text-xl font-semibold'><Link to='mySelectedClass'>My Selected Class</Link></li>
-      <li className='text-xl font-semibold'><Link to='allUser'>All Users</Link></li>
-      <li className='text-xl font-semibold'><Link>My Enrolled Class</Link></li>
+      {/* <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='mySelectedClass'>My Selected Class</Link></li>
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='allUser'>All Users</Link></li>
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link>My Enrolled Class</Link></li>
       <div className="divider"></div>
-      <li className='text-xl font-semibold'><Link to='/'>Home</Link></li> */}
+      <li className='text-xl font-semibold border border-black p-2 rounded-3xl my-2 hover:bg-orange-300 hover:text-white'><Link to='/'>Home</Link></li> */}
     </ul>
     </div>
   

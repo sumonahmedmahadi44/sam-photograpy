@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 const MySelectedClasses = () => {
-  const [selectedClass, refetch] = UseSelectedClass();
+  const [selectedClass, ,refetch] = UseSelectedClass();
 
   const handleDeleteClass = (cls) => {
     Swal.fire({
@@ -40,20 +40,20 @@ const MySelectedClasses = () => {
         heading="My Selected  Classes"
         subHeading="Welcome to Sam Photography"
       ></SectionTitle>
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full">
+      <div className="overflow-x-auto w-full mt-8">
+        <table className="table w-full bg-teal-100">
           {/* head */}
           <thead>
             <tr>
-              <th>#</th>
-              <th>className</th>
-              <th>Image</th>
-              <th>InstructorName</th>
-              <th>InstructorEmail</th>
-              <th>Price</th>
-              <th>Available seat</th>
-              <th>Payment</th>
-              <th>Delete</th>
+              <th className="font-extrabold text-orange-600 text-xs">#</th>
+              <th className="font-extrabold text-orange-600 text-xs">className</th>
+              <th className="font-extrabold text-orange-600 text-xs">Image</th>
+              <th className="font-extrabold text-orange-600 text-xs">InstructorName</th>
+              <th className="font-extrabold text-orange-600 text-xs">InstructorEmail</th>
+              <th className="font-extrabold text-orange-600 text-xs">Price</th>
+              <th className="font-extrabold text-orange-600 text-xs">Available seat</th>
+              <th className="font-extrabold text-orange-600 text-xs">Payment</th>
+              <th className="font-extrabold text-orange-600 text-xs">Delete</th>
               {/* <th>Update</th>
                             <th>Delete</th> */}
             </tr>
@@ -80,11 +80,11 @@ const MySelectedClasses = () => {
                   </div>
                 </td>
 
-                <td>${cls.InstructorName}</td>
-                <td>${cls.InstructorEmail}</td>
-                <td>${cls.price}</td>
-                <td>${cls.AvailableSeat}</td>
-                <td>
+                <td className="font-bold">${cls.InstructorName}</td>
+                <td className="font-bold">${cls.InstructorEmail}</td>
+                <td className="font-bold">${cls.price}</td>
+                <td className="font-bold">${cls.AvailableSeat}</td>
+                <td className="font-bold">
                  <Link to={`/dashboard/payment/${cls._id}`}> <button  className="btn btn-ghost bg-teal-500 ">
                     <FaCcAmazonPay></FaCcAmazonPay> Pay
                   </button></Link>
