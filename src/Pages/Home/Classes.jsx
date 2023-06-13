@@ -19,23 +19,18 @@ const Classes = () => {
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/approved");
+      const res = await fetch("https://sam-photgrapy-server.vercel.app/approved");
       return res.json();
     },
   });
-  // const { data } = useQuery({
-  //   queryKey: ["singleClasses"],
-  //   queryFn: async () => {
-  //     const res = await fetch(`http://localhost:5000/approved/${_id}`);
-  //     return res.json();
-  //   },
-  // });
+  
 
   const handleSelectClass = (cls) => {
     console.log(cls)
-    const { className, image, price, AvailableSeat, displayName, email, } = cls;
+    const { className, image, price, AvailableSeat, displayName, email, _id} = cls;
     if (user && user.email) {
       const classData = {
+        classId:_id,
         className,
         image,
         price,
@@ -45,7 +40,7 @@ const Classes = () => {
         email: user.email,
       };
 
-      fetch('http://localhost:5000/selectedClass', {
+      fetch('https://sam-photgrapy-server.vercel.app/selectedClass', {
         method: "POST",
         headers: {
           "content-type": "application/json",

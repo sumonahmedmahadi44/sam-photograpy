@@ -7,7 +7,7 @@ const UseSelectedClass = () => {
     const {data:selectedClass=[],isLoading:loading, refetch}=useQuery({
         queryKey:['selectedClass',user?.email],
         queryFn:async()=>{
-            const res = await fetch(`http://localhost:5000/selectedClass?email=${user?.email}`);
+            const res = await fetch(`https://sam-photgrapy-server.vercel.app/selectedClass?email=${user?.email}`);
             return res.json();
         }
     })

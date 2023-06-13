@@ -6,7 +6,8 @@ import UseAxios from "../../Hooks/UseAxios";
 import Swal from "sweetalert2";
 
 
-const CheckoutForm = ({ selectedClass, price }) => {
+const CheckoutForm = ({ data, price }) => {
+
     
     const stripe = useStripe();
     const elements = useElements();
@@ -25,7 +26,9 @@ const CheckoutForm = ({ selectedClass, price }) => {
                     setClientSecret(res.data.clientSecret);
                 })
         }
+        console.log(clientSecret)
     }, [price, axiosSecure])
+    
 
 
     const handleSubmit = async (event) => {
@@ -39,6 +42,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
         if (card === null) {
             return
         }
+        setProcessing(true)
 
         const { error } = await stripe.createPaymentMethod({
             type: 'card',
@@ -51,10 +55,10 @@ const CheckoutForm = ({ selectedClass, price }) => {
         }
         else {
             setCardError('');
-            // console.log('payment method', paymentMethod)
+           
         }
 
-        setProcessing(true)
+       
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -82,8 +86,11 @@ const CheckoutForm = ({ selectedClass, price }) => {
                 price,
                 date: new Date(),
                 quantity: 1,
-                classId: selectedClass.map(cls=>cls._id),
-                className:selectedClass.map(cls=>cls.className)
+                Id: data._id,
+                classId: data.classId,
+                image: data.image,
+                InstructorName: data.InstructorName,
+                className:data.className
                 
             }
             axiosSecure.post('/payments', payment)
@@ -123,7 +130,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || clientSecret  || processing}>
                     Pay
                 </button>
             </form>

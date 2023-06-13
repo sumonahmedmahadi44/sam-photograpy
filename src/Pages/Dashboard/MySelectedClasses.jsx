@@ -20,12 +20,12 @@ const MySelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deleteSelectedClass/${cls._id}`, {
+        fetch(`https://sam-photgrapy-server.vercel.app/deleteSelectedClass/${cls._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            refetch()
+            refetch();
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
@@ -85,7 +85,7 @@ const MySelectedClasses = () => {
                 <td>${cls.price}</td>
                 <td>${cls.AvailableSeat}</td>
                 <td>
-                 <Link to='/dashboard/payment'> <button className="btn btn-ghost bg-teal-500 ">
+                 <Link to={`/dashboard/payment/${cls._id}`}> <button  className="btn btn-ghost bg-teal-500 ">
                     <FaCcAmazonPay></FaCcAmazonPay> Pay
                   </button></Link>
                   

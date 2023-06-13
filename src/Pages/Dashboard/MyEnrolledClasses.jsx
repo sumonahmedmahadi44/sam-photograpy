@@ -1,10 +1,84 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
+import SectionTitle from '../../components/SectionTitle';
 
 const MyEnrolledClasses = () => {
+    const {user}=useContext(AuthContext);
+    const {data:enrolledClass=[],isLoading:loading, refetch}=useQuery({
+        queryKey:['enrolledClass',user?.email],
+        queryFn:async()=>{
+            const res = await fetch(`https://sam-photgrapy-server.vercel.app/payments?email=${user?.email}`);
+            return res.json();
+        }
+    })
     return (
-        <div>
-            
-        </div>
+        <div className="w-full">
+      <SectionTitle
+        heading="My Selected  Classes"
+        subHeading="Welcome to Sam Photography"
+      ></SectionTitle>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>className</th>
+              <th>Quantity</th>
+              <th>email</th>
+              <th>Image</th>
+              <th>InstructorName</th>
+              <th>Price</th>
+              
+              {/* <th>Update</th>
+                            <th>Delete</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {enrolledClass.map((cls, index) => (
+              <tr key={cls._id}>
+                <td>{index + 1}</td>
+                <td>
+                  <div>
+                    <div className="font-bold">{cls.className}</div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <div className="font-bold">{cls.quantity}</div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <div className="font-bold">{cls.email}</div>
+                  </div>
+                </td>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={cls.image}
+                          alt="internet Error"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td>${cls.InstructorName}</td>
+               
+                <td>${cls.price}</td>
+                
+                
+                
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
     );
 };
 

@@ -11,7 +11,7 @@ const AllClasses = () => {
 
     const handleApproved = user => {
         
-        fetch(`http://localhost:5000/classes/status/approved/${user._id}`, {
+        fetch(`https://sam-photgrapy-server.vercel.app/classes/status/approved/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -32,7 +32,7 @@ const AllClasses = () => {
     }
     const handleDenied = user => {
         
-        fetch(`http://localhost:5000/classes/status/denied/${user._id}`, {
+        fetch(`https://sam-photgrapy-server.vercel.app/classes/status/denied/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
