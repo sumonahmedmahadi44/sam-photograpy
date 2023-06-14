@@ -4,6 +4,8 @@ import SectionTitle from "../../components/SectionTitle";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import logo from '../../../public/logo.jpg'
+import { Link } from "react-router-dom";
+
 
 const AllClasses = () => {
   const [classes, , refetch] = UseClasses();
@@ -77,13 +79,14 @@ const AllClasses = () => {
               </th>
               <th className="font-extrabold text-orange-600 text-xs">Price</th>
               <th className="font-extrabold text-orange-600 text-xs">
-                Available seat
+                 seat
               </th>
               <th className="font-extrabold text-orange-600 text-xs">status</th>
               <th className="font-extrabold text-orange-600 text-xs">
                 Approved
               </th>
               <th className="font-extrabold text-orange-600 text-xs">Denied</th>
+              <th className="font-extrabold text-orange-600 text-xs">Feedback</th>
               {/* <th>Update</th>
                             <th>Delete</th> */}
             </tr>
@@ -151,6 +154,9 @@ const AllClasses = () => {
                       <FaTimes></FaTimes>
                     </button>
                   )}
+                </td>
+                <td>
+                  {cls.status === 'denied'? <Link to='/feedback'><button className="btn bg-gradient-to-r from-purple-500 to-pink-500200 ">Feedback</button> </Link>: <button className="p-2 btn bg-gradient-to-r from-purple-500 to-pink-500200 " disabled>Not Need</button>}
                 </td>
               </tr>
             ))}

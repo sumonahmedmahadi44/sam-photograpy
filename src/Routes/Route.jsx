@@ -20,6 +20,7 @@ import ErrorPage from "../Pages/Shared/ErrorPage";
 import Payment from "../Pages/Dashboard/Payment";
 import CheckoutForm from "../Pages/Dashboard/CheckoutForm";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import Feedback from "../components/Feedback";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
         {
             path:'/classes',
             element: <Classes></Classes>
+        },
+        {
+          path:'/feedback',
+          element:<Feedback></Feedback>
         },
         
       ]
@@ -94,6 +99,7 @@ export const router = createBrowserRouter([
           path:'myEnrolledClasses',
           element:<MyEnrolledClasses></MyEnrolledClasses>
         },
+        
       ]
     }
   ]);
