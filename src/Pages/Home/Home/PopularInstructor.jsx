@@ -16,7 +16,7 @@ const PopularInstructor = () => {
     ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center my-10">
         {instructor.slice(0,6).map((ins) => (
-          <div key={ins._id} className="card w-96 bg-gradient-to-r from-purple-500 to-pink-500200 shadow-xl">
+          <div key={ins._id} className="card w-96 hover:animate-spin bg-gradient-to-r from-purple-500 to-pink-500200 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={ins.image} alt="Shoes" className="rounded-xl h-96 " />
             </figure>

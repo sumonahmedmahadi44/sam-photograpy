@@ -59,8 +59,8 @@ const AllClasses = () => {
         subHeading="Welcome to Sam Photography"
         image={logo}
       ></SectionTitle>
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full">
+      <div className="overflow-x-auto w-full bg-gradient-to-r from-purple-500 to-pink-500200">
+        <table className="table w-full ">
           {/* head */}
           <thead>
             <tr>
@@ -121,8 +121,8 @@ const AllClasses = () => {
                 </td>
 
                 <td className="font-bold">${cls.price}</td>
-                <td className="font-bold">${cls.AvailableSeat}</td>
-                <td className="font-bold">${cls.status}</td>
+                <td className="font-bold">{cls.AvailableSeat}</td>
+                <td className="font-bold">{cls.status}</td>
                 <td>
                   {cls?.status === "approved" || cls.status === "denied" ? (
                     <button
@@ -132,7 +132,7 @@ const AllClasses = () => {
                       <FaCheck></FaCheck>
                     </button>
                   ) : (
-                    <button onClick={() => handleApproved(cls)}>
+                    <button className="p-2 text-2xl" onClick={() => handleApproved(cls)}>
                       <FaCheck></FaCheck>
                     </button>
                   )}
@@ -146,7 +146,7 @@ const AllClasses = () => {
                       <FaTimes></FaTimes>
                     </button>
                   ) : (
-                    <button onClick={() => handleDenied(cls)}>
+                    <button className="p-2 text-2xl" onClick={() => handleDenied(cls)}>
                       {" "}
                       <FaTimes></FaTimes>
                     </button>

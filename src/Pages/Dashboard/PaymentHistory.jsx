@@ -21,7 +21,7 @@ const PaymentHistory = () => {
         subHeading="Welcome to Sam Photography"
         image={logo}
       ></SectionTitle>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full bg-gradient-to-r from-purple-500 to-pink-500200">
         <table className="table w-full">
           {/* head */}
           <thead>

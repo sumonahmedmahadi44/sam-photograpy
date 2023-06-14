@@ -60,7 +60,7 @@ const AddClasses = () => {
 
   return (
     <div className="w-full px-10">
-      <SectionTitle subHeading="Welcome" heading="Add a class" image={logo}></SectionTitle>
+      <SectionTitle subHeading="Welcome to Sam Photography" heading="Add a class" image={logo}></SectionTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full mb-4">
           <label className="label">

@@ -91,16 +91,16 @@ const Classes = () => {
       ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center my-10">
         {classes.map((cls) => (
-          <div key={cls._id} className="card w-96 bg-teal-200 shadow-xl">
+          <div key={cls._id} className="card w-96 bg-gradient-to-r from-purple-500 to-pink-500200 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={cls.image} alt="Shoes" className="rounded-xl h-96 " />
             </figure>
             <div className="card-body  items-center text-center">
               <h2 className="card-title">ClassName: {cls.className}</h2>
-              <p>Instructor Name: {cls.displayName}</p>
-              <p>Available Seat :{cls.AvailableSeat}</p>
-              <p>Enroll Students : {cls.enroll}</p>
-              <p>Price : {cls.price}</p>
+              <p className="font-bold">Instructor Name: {cls.displayName}</p>
+              <p className="font-bold">Available Seat :{cls.AvailableSeat}</p>
+              <p className="font-bold">Enroll Students : {cls.enroll}</p>
+              <p className="font-bold">Price : {cls.price}</p>
               <div className="card-actions">
                 <button disabled={isAdmin || isInstructor || cls.AvailableSeat == '0'}
                    onClick={() => handleSelectClass(cls)}

@@ -131,7 +131,7 @@ const CheckoutForm = ({ data, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret  || processing}>
+                <button className="btn border bg-gradient-to-r from-purple-500 to-pink-500200 w-1/2 p-3 btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret  || processing}>
                     Pay
                 </button>
             </form>

@@ -78,15 +78,15 @@ const AllUser = () => {
         subHeading="Welcome to Sam Photography"
         image={logo}
       ></SectionTitle>
-            <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full bg-gradient-to-r from-purple-500 to-pink-500200">
                 <table className="table table-xs md:table-lg">
                     <thead>
                         <tr className="">
-                            <th className="font-extrabold text-orange-600 text-xs">#</th>
-                            <th className="font-extrabold text-orange-600 text-xs">Users Name</th>
-                            <th className="font-extrabold text-orange-600 text-xs">Users Email</th>
-                            <th className="font-extrabold text-orange-600 text-xs">Make Admin</th>
-                            <th className="font-extrabold text-orange-600 text-xs">Make  Instructor</th>
+                            <th className="font-extrabold text-orange-600 text-xl">#</th>
+                            <th className="font-extrabold text-orange-600 text-xl">Users Name</th>
+                            <th className="font-extrabold text-orange-600 text-xl">Users Email</th>
+                            <th className="font-extrabold text-orange-600 text-xl">Make Admin</th>
+                            <th className="font-extrabold text-orange-600 text-xl">Make  Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
