@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MyClasses from '../Pages/Dashboard/MyClasses';
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState('');
@@ -36,6 +37,7 @@ const Feedback = () => {
             </button>
           </div>
         </form>
+        
       </div>
     </div>
   );

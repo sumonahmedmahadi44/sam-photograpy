@@ -114,12 +114,12 @@ const AllClasses = () => {
                 </td>
                 <td>
                   <div>
-                    <div className="font-bold">{user?.displayName}</div>
+                    <div className="font-bold">{cls?.displayName}</div>
                   </div>
                 </td>
                 <td>
                   <div>
-                    <div className="font-bold">{user?.email}</div>
+                    <div className="font-bold">{cls?.email}</div>
                   </div>
                 </td>
 

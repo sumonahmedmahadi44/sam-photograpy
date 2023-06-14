@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Provider/AuthProvider";
 import logo from '../../../public/logo.jpg'
 
-const MyClasses = () => {
+const MyClasses = ({feedback}) => {
   const { user } = useContext(AuthContext);
   const { data: classes = [] } = useQuery({
     queryKey: ["classes", user?.email],
@@ -33,6 +33,7 @@ const MyClasses = () => {
               <th className="font-extrabold text-orange-600 text-xs">Available seat</th>
               <th className="font-extrabold text-orange-600 text-xs">Enroll Students</th>
               <th className="font-extrabold text-orange-600 text-xs">Status</th>
+              <th className="font-extrabold text-orange-600 text-xs">Feedback</th>
               <th className="font-extrabold text-orange-600 text-xs">Update</th>
               {/* <th>Update</th>
                             <th>Delete</th> */}
@@ -64,6 +65,7 @@ const MyClasses = () => {
                 <td className="font-bold text-center">{cls.AvailableSeat}</td>
                 <td className="font-bold text-center">{cls.enroll}</td>
                 <td className="font-bold">${cls.status}</td>
+                <td className="font-bold">{feedback? feedback : 'NO Feedback'}</td>
                 <td>
                   <button className="btn btn-secondary">Update</button>
                 </td>
