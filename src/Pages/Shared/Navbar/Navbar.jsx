@@ -3,13 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../../public/logo.jpg'
 
 import {
-  BoltIcon,
+  
   Bars3BottomRightIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
 import { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import DarkMode from '../../../components/DarkMode/Darkmode';
 
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext)
@@ -63,7 +62,6 @@ const Navbar = () => {
                           Classes
                       </NavLink>
                   </li>
-                  
                   <li className='text-black font-bold text-xl'>
                       {user ?
                       <div className='flex items-center gap-6'>

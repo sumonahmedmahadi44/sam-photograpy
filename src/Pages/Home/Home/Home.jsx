@@ -10,7 +10,7 @@ const Home = () => {
         <div>
             
             <Banner></Banner>
-            <DarkMode></DarkMode>
+          
             <PopularClass></PopularClass>
             <PopularInstructor></PopularInstructor>
             <GallerySection></GallerySection>
