@@ -1,6 +1,6 @@
 ###  assignment project link
 
-live link :  [https://unique-car-toys.web.app/](https://sam-photography-camp.web.app/)
+live link :  (https://sam-photography-camp.web.app/)
 
 # Project Name
 Sam PhotoGraphy
