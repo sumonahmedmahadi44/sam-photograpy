@@ -133,7 +133,7 @@ const AddClasses = () => {
         </div>
 
         <input
-          className="btn btn-sm mt-4 bg-teal-200"
+          className="btn btn-sm mt-4 bg-gradient-to-r from-purple-500 to-pink-500200"
           type="submit"
           value="Add class"
         />

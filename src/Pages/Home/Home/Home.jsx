@@ -1,6 +1,8 @@
 import React from 'react';
 import Banner from '../Banner';
 import PopularClass from './PopularClass';
+import PopularInstructor from './PopularInstructor';
+import GallerySection from './GallerySection';
 
 const Home = () => {
     return (
@@ -8,6 +10,8 @@ const Home = () => {
             
             <Banner></Banner>
             <PopularClass></PopularClass>
+            <PopularInstructor></PopularInstructor>
+            <GallerySection></GallerySection>
             
         </div>
     );

@@ -21,7 +21,7 @@ const Navbar = () => {
   }
     return (
       
-      <div className='bg-teal-200 container rounded px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+      <div className=' bg-gradient-to-r from-purple-500 to-pink-500200  container rounded-3xl px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
       <div className=''>
           <div className='relative flex text-stone-100 items-center justify-between'>
               {/* Logo Section */}

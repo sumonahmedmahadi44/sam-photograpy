@@ -16,13 +16,14 @@ const Classes = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { data: classes = [] } = useQuery({
-    queryKey: ["classes"],
-    queryFn: async () => {
-      const res = await fetch("https://sam-photgrapy-server.vercel.app/approved");
-      return res.json();
-    },
-  });
+  // const { data: classes = [] } = useQuery({
+  //   queryKey: ["classes"],
+  //   queryFn: async () => {
+  //     const res = await fetch("https://sam-photgrapy-server.vercel.app/approved");
+  //     return res.json();
+  //   },
+  // });
+  
   
 
   const handleSelectClass = (cls) => {

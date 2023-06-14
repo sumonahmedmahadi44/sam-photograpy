@@ -4,19 +4,20 @@ import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../components/SectionTitle';
 import logo from '../../../public/logo.jpg'
 
-const MyEnrolledClasses = () => {
+
+const PaymentHistory = () => {
     const {user}=useContext(AuthContext);
     const {data:enrolledClass=[],isLoading:loading, refetch}=useQuery({
         queryKey:['enrolledClass',user?.email],
         queryFn:async()=>{
-            const res = await fetch(`https://sam-photgrapy-server.vercel.app/payments?email=${user?.email}`);
+            const res = await fetch(`https://sam-photgrapy-server.vercel.app/paymentHistory?email=${user?.email}`);
             return res.json();
         }
     })
     return (
         <div className="w-full">
       <SectionTitle
-        heading="My Selected  Classes"
+        heading="My Payment History"
         subHeading="Welcome to Sam Photography"
         image={logo}
       ></SectionTitle>
@@ -84,4 +85,4 @@ const MyEnrolledClasses = () => {
     );
 };
 
-export default MyEnrolledClasses;
+export default PaymentHistory;

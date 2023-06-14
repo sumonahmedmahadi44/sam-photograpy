@@ -10,32 +10,32 @@ import Container from '../Shared/Container/Container';
 
 const Banner = () => {
     return (
-        <Container><Carousel className='text-center'>
-        <div>
-            <img src={img1} />
+       <Carousel className='text-center max-w-[2520px] mx-auto  md:px-10 sm:px-2 px-4 '>
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img1} />
         
         </div>
-        <div>
-            <img src={img2}/>
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img2}/>
         
         </div>
-        <div>
-            <img src={img3} />
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img3} />
         
         </div>
-        <div>
-            <img src={img1} />
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img1} />
         
         </div>
-        <div>
-            <img src={img3}/>
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img3}/>
         
         </div>
-        <div>
-            <img src={img2} />
+        <div className=' p-2 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl'>
+            <img className='rounded-3xl' src={img2} />
         
         </div>
-    </Carousel></Container>
+    </Carousel>
     );
 };
 

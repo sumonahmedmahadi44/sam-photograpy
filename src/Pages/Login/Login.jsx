@@ -5,6 +5,7 @@ import { FaGoogle,FaEyeSlash,FaEye } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
 import SectionTitle from '../../components/SectionTitle';
 import Swal from 'sweetalert2';
+import logo from '../../../public/logo.jpg'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -49,7 +50,7 @@ const Login = () => {
 
 
 <div>
-<SectionTitle subHeading='welcome to SAM Photography' heading='Please Log in'></SectionTitle>
+<SectionTitle subHeading='welcome to SAM Photography' heading='Please Log in' image={logo}></SectionTitle>
   <div className="w-full max-w-xs mx-auto m-20 border border-black border-spacing-9 p-10">
 <form  onSubmit={handleSubmit(onSubmit)}>
       {/* register your input into the hook by invoking the "register" function */}

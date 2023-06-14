@@ -89,11 +89,11 @@ const AllUser = () => {
                                     <th className="font-bold">{index + 1}</th>
                                     <td className="font-bold">{user.name}</td>
                                     <td className="font-bold">{user.email}</td>
-                                    <td className="font-bold">{user.role === 'admin' ? 'admin' :
-                                        <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-teal-500  text-white"><FaUserShield></FaUserShield></button>
+                                    <td className="font-bold">{user.role === 'admin' ? <button disabled onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-gradient-to-r from-purple-500 to-pink-500500  text-white"><FaUserShield></FaUserShield></button> :
+                                        <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-gradient-to-r from-purple-500 to-pink-500500  text-white"><FaUserShield></FaUserShield></button>
                                     }</td>
-                                    <td className="font-bold">{user.role === 'instructor' ? 'instructor' :
-                                        <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-teal-500  text-white"><FaChalkboardTeacher></FaChalkboardTeacher></button>
+                                    <td className="font-bold">{user.role === 'instructor' ? <button disabled onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-gradient-to-r from-purple-500 to-pink-500500  text-white"><FaChalkboardTeacher></FaChalkboardTeacher></button> :
+                                        <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-gradient-to-r from-purple-500 to-pink-500500  text-white"><FaChalkboardTeacher></FaChalkboardTeacher></button>
                                     }</td>
                                 </tr>
 

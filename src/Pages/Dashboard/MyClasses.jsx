@@ -29,6 +29,7 @@ const MyClasses = () => {
               <th className="font-extrabold text-orange-600 text-xs">Image</th>
               <th className="font-extrabold text-orange-600 text-xs">Price</th>
               <th className="font-extrabold text-orange-600 text-xs">Available seat</th>
+              <th className="font-extrabold text-orange-600 text-xs">Enroll Students</th>
               <th className="font-extrabold text-orange-600 text-xs">Status</th>
               <th className="font-extrabold text-orange-600 text-xs">Update</th>
               {/* <th>Update</th>
@@ -58,7 +59,8 @@ const MyClasses = () => {
                 </td>
 
                 <td className="font-bold">${cls.price}</td>
-                <td className="font-bold">${cls.AvailableSeat}</td>
+                <td className="font-bold text-center">{cls.AvailableSeat}</td>
+                <td className="font-bold text-center">{cls.enroll}</td>
                 <td className="font-bold">${cls.status}</td>
                 <td>
                   <button className="btn btn-secondary">Update</button>
