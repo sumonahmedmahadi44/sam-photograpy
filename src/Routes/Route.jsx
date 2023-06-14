@@ -48,10 +48,6 @@ export const router = createBrowserRouter([
             path:'/classes',
             element: <Classes></Classes>
         },
-        {
-          path:'/feedback',
-          element:<Feedback></Feedback>
-        },
         
       ]
     },
@@ -88,7 +84,7 @@ export const router = createBrowserRouter([
         {
           path:'payment/:id',
           element:<Payment></Payment>,
-          loader:({params})=>fetch(`http://localhost:5000/payments/${params.id}`)
+          loader:({params})=>fetch(`https://sam-photgrapy-server.vercel.app/payments/${params.id}`)
           
         },
         {
@@ -99,7 +95,11 @@ export const router = createBrowserRouter([
           path:'myEnrolledClasses',
           element:<MyEnrolledClasses></MyEnrolledClasses>
         },
-        
+        {
+          path:'feedback/:id',
+          element:<Feedback></Feedback>,
+          loader:({params})=>fetch(`https://sam-photgrapy-server.vercel.app/feedback/${params.id}`),
+        },
       ]
     }
   ]);

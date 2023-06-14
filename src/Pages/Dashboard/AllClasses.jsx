@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UseClasses from "../../Hooks/UseClasses";
 import SectionTitle from "../../components/SectionTitle";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaCheck, FaEdit, FaTimes } from "react-icons/fa";
 import logo from '../../../public/logo.jpg'
 import { Link } from "react-router-dom";
 
@@ -156,7 +156,9 @@ const AllClasses = () => {
                   )}
                 </td>
                 <td>
-                  {cls.status === 'denied'? <Link to='/feedback'><button className="btn bg-gradient-to-r from-purple-500 to-pink-500200 ">Feedback</button> </Link>: <button className="p-2 btn bg-gradient-to-r from-purple-500 to-pink-500200 " disabled>Not Need</button>}
+                  <Link to ={`/dashboard/feedback/${cls._id}`}>
+                    <button className="flex justify-between gap-2 items-center"><FaEdit></FaEdit>Feedback</button>
+                  </Link>
                 </td>
               </tr>
             ))}

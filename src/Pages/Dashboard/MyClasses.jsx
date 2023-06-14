@@ -3,9 +3,12 @@ import SectionTitle from "../../components/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Provider/AuthProvider";
 import logo from '../../../public/logo.jpg'
+import { useLoaderData } from "react-router-dom";
 
 const MyClasses = ({feedback}) => {
   const { user } = useContext(AuthContext);
+
+  const userFeedback = useLoaderData();
   const { data: classes = [] } = useQuery({
     queryKey: ["classes", user?.email],
     queryFn: async () => {
@@ -65,7 +68,7 @@ const MyClasses = ({feedback}) => {
                 <td className="font-bold text-center">{cls.AvailableSeat}</td>
                 <td className="font-bold text-center">{cls.enroll}</td>
                 <td className="font-bold">${cls.status}</td>
-                <td className="font-bold">{feedback? feedback : 'NO Feedback'}</td>
+                <td className="font-bold">{cls.status === 'pending' || cls.status === 'approved' ? 'NO Feedback ' : userFeedback}</td>
                 <td>
                   <button className="btn btn-secondary">Update</button>
                 </td>
