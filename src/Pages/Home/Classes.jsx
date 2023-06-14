@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import UseAdmin from "../../Hooks/UseAdmin";
 import UseInstructor from "../../Hooks/UseInstructor";
 import logo from '../../../public/logo.jpg'
+import SectionTitle from "../../components/SectionTitle";
 
 
 const Classes = () => {
