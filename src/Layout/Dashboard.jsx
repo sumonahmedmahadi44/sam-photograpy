@@ -10,9 +10,12 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Dashboard = () => {
-  const {user}= useContext(AuthContext)
+  const {user,loading}= useContext(AuthContext)
     const [isAdmin]= UseAdmin();
     const [isInstructor] = UseInstructor();
+    if(loading){
+      <span className="loading loading-infinity loading-lg text-secondary"></span>
+    }
     return (
         <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

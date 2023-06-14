@@ -13,7 +13,7 @@ import Lottie from 'lottie-react';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {signIn,signInWithGoogle} = useContext(AuthContext)
+  const {signIn,signInWithGoogle,loading} = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,6 +49,10 @@ const Login = () => {
  
     
     
+  }
+
+  if(loading){
+    <span className="loading loading-infinity loading-lg text-secondary"></span>
   }
     return (
 

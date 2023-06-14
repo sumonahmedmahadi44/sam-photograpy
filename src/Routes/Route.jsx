@@ -21,6 +21,7 @@ import Payment from "../Pages/Dashboard/Payment";
 import CheckoutForm from "../Pages/Dashboard/CheckoutForm";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import Feedback from "../components/Feedback";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -53,7 +54,7 @@ export const router = createBrowserRouter([
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
           path:'allUser',
