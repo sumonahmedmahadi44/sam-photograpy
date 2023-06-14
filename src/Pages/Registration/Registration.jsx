@@ -7,6 +7,10 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import SectionTitle from "../../components/SectionTitle";
 import Swal from "sweetalert2";
 import logo from '../../../public/logo.jpg'
+import Container from "../Shared/Container/Container";
+import pic from '../../assets/124956-login.json';
+import Lottie from 'lottie-react';
+
 
 const Registration = () => {
   // const {createUser,logOut,signInWithGoogle} = useContext(AuthContext)
@@ -62,13 +66,18 @@ const Registration = () => {
     });
   };
   return (
-    <div>
-      <SectionTitle
+    <Container>
+        <SectionTitle
         subHeading="welcome to SAM Photography"
         heading="Please Sign up"
         image={logo}
       ></SectionTitle>
-      <div className="w-full max-w-xs mx-auto m-10 border border-black border-spacing-9 p-10">
+        <div className="flex">
+        <div className='w-1/2'> <Lottie animationData={pic}></Lottie> </div>
+
+            <div className="w-1/2">
+      
+      <div className="w-full max-w-xs mx-auto m-10 border border-black border-spacing-9 bg-gradient-to-r from-purple-500 to-pink-500200 rounded-3xl p-5">
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
           <input
@@ -136,7 +145,7 @@ const Registration = () => {
           )}
 
           <input
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full btn "
+            className="bg-gradient-to-r from-purple-500 to-pink-500200 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full btn "
             type="submit"
             value="Registration"
           />
@@ -152,7 +161,7 @@ const Registration = () => {
         <Link to="/">
           <button
             onClick={handleGoogleBtn}
-            className="btn btn-outline btn-info w-full mt-5"
+            className="btn btn-outline btn-secondary w-full mt-5"
           >
             {" "}
             <FaGoogle className="me-2"></FaGoogle> Google
@@ -160,6 +169,8 @@ const Registration = () => {
         </Link>
       </div>
     </div>
+        </div>
+    </Container>
   );
 };
 
