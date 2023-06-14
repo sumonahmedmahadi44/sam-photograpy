@@ -14,7 +14,7 @@ const SectionTitle = ({ heading, subHeading, image }) => {
           <img src={image} alt="Section Image" className="w-24 h-24" />
         </motion.div>
         <h1 className="text-5xl font-bold text-center underline py-2 text-white mb-2">{heading}</h1>
-        <p className="text-xl border border-black w-2/5 mx-auto p-4 bg-black  text-center  text-purple-200">{subHeading}</p>
+        <p className="text-xl border border-black md:w-2/5 mx-auto p-4 bg-black  text-center  text-purple-200">{subHeading}</p>
       </div>
     </div>
   );
