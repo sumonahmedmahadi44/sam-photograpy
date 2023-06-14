@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import SectionTitle from "../../components/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Provider/AuthProvider";
+import logo from '../../../public/logo.jpg'
 
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const MyClasses = () => {
       <SectionTitle
         heading="My Classes"
         subHeading="Welcome to Sam Photography"
+        image={logo}
       ></SectionTitle>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

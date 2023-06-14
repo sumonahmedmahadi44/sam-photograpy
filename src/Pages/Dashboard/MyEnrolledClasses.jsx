@@ -16,7 +16,7 @@ const MyEnrolledClasses = () => {
     return (
         <div className="w-full">
       <SectionTitle
-        heading="My Selected  Classes"
+        heading="My Enroll  Classes"
         subHeading="Welcome to Sam Photography"
         image={logo}
       ></SectionTitle>

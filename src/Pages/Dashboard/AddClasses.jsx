@@ -4,6 +4,7 @@ import UseAxios from "../../Hooks/UseAxios";
 import SectionTitle from "../../components/SectionTitle";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import logo from '../../../public/logo.jpg'
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_KEY;
 
@@ -59,7 +60,7 @@ const AddClasses = () => {
 
   return (
     <div className="w-full px-10">
-      <SectionTitle subHeading="Welcome" heading="Add a class"></SectionTitle>
+      <SectionTitle subHeading="Welcome" heading="Add a class" image={logo}></SectionTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full mb-4">
           <label className="label">

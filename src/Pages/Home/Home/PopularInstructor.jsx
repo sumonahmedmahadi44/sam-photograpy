@@ -21,8 +21,8 @@ const PopularInstructor = () => {
               <img src={ins.image} alt="Shoes" className="rounded-xl h-96 " />
             </figure>
             <div className="card-body  items-center text-center">
-              <h2 className="card-title">Instructor Name : {ins.name}</h2>
-              <p>Instructor Email : {ins.email}</p>
+              <h2 className="card-title font-bold">Instructor Name : {ins.name}</h2>
+              <p className='font-bold'>Instructor Email : {ins.email}</p>
               
               
             </div>

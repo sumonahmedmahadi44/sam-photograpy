@@ -3,6 +3,7 @@ import UseClasses from "../../Hooks/UseClasses";
 import SectionTitle from "../../components/SectionTitle";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import logo from '../../../public/logo.jpg'
 
 const AllClasses = () => {
   const [classes, , refetch] = UseClasses();
@@ -56,6 +57,7 @@ const AllClasses = () => {
       <SectionTitle
         heading="My Classes"
         subHeading="Welcome to Sam Photography"
+        image={logo}
       ></SectionTitle>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

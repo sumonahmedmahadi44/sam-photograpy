@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import logo from '../../../public/logo.jpg'
+import SectionTitle from '../../components/SectionTitle';
 
 const AllUser = () => {
     const {data:users=[],refetch}= useQuery(['users'],async()=>{
@@ -71,6 +73,11 @@ const AllUser = () => {
 
     return (
         <div className="w-full">
+            <SectionTitle
+        heading="My Classes"
+        subHeading="Welcome to Sam Photography"
+        image={logo}
+      ></SectionTitle>
             <div className="overflow-x-auto w-full">
                 <table className="table table-xs md:table-lg">
                     <thead>

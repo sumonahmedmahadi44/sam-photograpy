@@ -1,10 +1,10 @@
 import { loadStripe } from "@stripe/stripe-js";
-
 import CheckoutForm from "./CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import SectionTitle from "../../components/SectionTitle";
 import UseSelectedClass from "../../Hooks/UseSelectedClass";
 import { useLoaderData } from "react-router-dom";
+import logo from '../../../public/logo.jpg'
 
 
 // TODO: provide publishable Key
@@ -19,7 +19,7 @@ const Payment = () => {
     // const price = parseFloat(total.toFixed(2))
     return (
         <div className="w-full">
-            <SectionTitle subHeading="please process" heading="Payment"></SectionTitle>
+            <SectionTitle subHeading="please process" heading="Payment" image={logo}></SectionTitle>
             
             <Elements stripe={stripePromise} >
                 <CheckoutForm price={price} data={data}></CheckoutForm>

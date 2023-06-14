@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "../Shared/Container/Container";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import UseAdmin from "../../Hooks/UseAdmin";
 import UseInstructor from "../../Hooks/UseInstructor";
+import logo from '../../../public/logo.jpg'
+
 
 const Classes = () => {
   const { user } = useContext(AuthContext);
@@ -16,14 +18,17 @@ const Classes = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const { data: classes = [] } = useQuery({
-  //   queryKey: ["classes"],
-  //   queryFn: async () => {
-  //     const res = await fetch("https://sam-photgrapy-server.vercel.app/approved");
-  //     return res.json();
-  //   },
-  // });
+  const { data: classes = [] } = useQuery({
+    queryKey: ["classes"],
+    queryFn: async () => {
+      const res = await fetch("https://sam-photgrapy-server.vercel.app/approved");
+      return res.json();
+    },
+  });
   
+
+  
+
   
 
   const handleSelectClass = (cls) => {
@@ -78,6 +83,11 @@ const Classes = () => {
 
   return (
     <Container>
+      <SectionTitle
+        heading="ALL  Classes"
+        subHeading="Welcome to Sam Photography"
+        image={logo}
+      ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center my-10">
         {classes.map((cls) => (
           <div key={cls._id} className="card w-96 bg-teal-200 shadow-xl">
